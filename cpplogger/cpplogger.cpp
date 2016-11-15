@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include <stdio.h>
-#define LOG_LEVEL 3
+#define LOG_LEVEL 4
 #define PRINT_VAR
 #define CATCH_ERROR
 #include "cpplogger.hpp"
@@ -11,18 +11,22 @@
 
 int main(int argc, const char * argv[]) {
     LOGFILE
-        
+
     LOG_DEBUG("Maybe i can touch this button...");
 
-    LOG_INFO("Pressure is dropping...");
+    LOG_INFO("please be careful");
 
-    LOG_ERROR("Error is everywhere please respondmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
+    LOG_ERROR("Error is everywhere please respondsssssssssssssssssssssssssssssssssssssssssssssssssss");
 
-    int going_down = 1;
-    LOG_IF_ERROR(going_down, "i'm going down... if only i had used macro-logger...");
+ 
 
     int i = 0;
     _(++i);
+
+    for (int i = 0; i < 5; ++i)
+    {
+        _(i);
+    }
     
     CATCH(
         throw 20;

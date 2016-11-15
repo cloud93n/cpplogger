@@ -105,7 +105,7 @@ static inline char *timenow();
 //function to print expression and identifier
 // use _()
 #ifdef PRINT_VAR
-#define _(X) std::cout << #X << " = " << X << std::endl; 
+#define _(X) outfile << #X << " = " << X << std::endl; 
 #endif //print_var
 
 #else

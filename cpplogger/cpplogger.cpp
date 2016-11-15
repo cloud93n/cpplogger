@@ -6,7 +6,7 @@
 #define LOG_LEVEL 3
 #define PRINT_VAR
 #define CATCH_ERROR
-#include "cpplogger.h"
+#include "cpplogger.hpp"
 
 
 int main(int argc, const char * argv[]) {
@@ -23,10 +23,9 @@ int main(int argc, const char * argv[]) {
 
     int i = 0;
     _(++i);
-  
+    
     CATCH(
-        int i;
-
+        throw 20;
     )
         return 0;
 }

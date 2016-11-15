@@ -7,7 +7,21 @@
 
 cpplogger.h
 Purpose : Provided logging function
-How to use : cpplogger.h must be included in cpp
+How to use : 
+1. cpplogger.hpp must be included in main file.
+2. define log_level using #define LOG_LEVEL #level main file 
+    where #level is
+    -DEBUG_LEVEL : log debug, info and error
+    -INFO_LEVEL : log info and error
+    -ERROR_LEVEL : log error
+    -NO_LOG : log error only for defined condition
+3. if LOG_LEVEL is set as DEBUG_LEVEL then additional funtions are provided
+    -to print variabel name and value, #define PRINT_VAR must be included in main file.
+        function _(x) is used to print variable where x is the identifier
+    -to use try-catch block for code, #define CATCH_ERROR can be included in main file.
+        function CATCH(CODE) is used for exception handling whece CODE is block of code
+*/
+
 
 
 
@@ -16,6 +30,7 @@ How to use : cpplogger.h must be included in cpp
 #include <fstream>
 #include <iostream>
 #include <iomanip>
+#include <exception>
 
 // === auxiliar functions
 static inline char *timenow();
@@ -46,8 +61,8 @@ static inline char *timenow();
 
 
 //print to file
-#define PRINTFUNCTION(LOG_TAG,message)      std::cout<< std::left << timenow() << " | " << std::setw(7) << LOG_TAG << " | " << std::setw(20) << _FILE;\
-                                            std::cout << " | "  << std::setw(10) << std::right << __FUNCTION__ << " : " << std::left <<std::setw(4) <<__LINE__ << " | " << message << '\n'
+#define PRINTFUNCTION(LOG_TAG,message)      outfile<< std::left << timenow() << " | " << std::setw(7) << LOG_TAG << " | " << std::setw(20) << _FILE;\
+                                            outfile << " | "  << std::setw(10) << std::right << __FUNCTION__ << " : " << std::left <<std::setw(4) <<__LINE__ << " | " << message << '\n'
 
 #define ERROR_TAG   "ERROR"
 #define INFO_TAG    "INFO"
@@ -80,23 +95,19 @@ static inline char *timenow();
 #if LOG_LEVEL == DEBUG_LEVEL
 //catch error using try block
 #ifdef CATCH_ERROR 
-
 #define CATCH(CODE) try{CODE} catch(...)\
-                    {LOG_DEBUG("terminated");}
-
-
+                    {LOG_DEBUG("exception");}
 #endif // CATCH_ERROR
 
 //function to print expression and identifier
 // use _()
 #ifdef PRINT_VAR
-#define _(x) std::cout << #x << " = " << x << std::endl; 
+#define _(X) std::cout << #X << " = " << X << std::endl; 
+#endif //print_var
 
-
-#endif 
 #else
 #define CATCH(CODE)
-#define _(x) x
+#define _(X) X
 #endif //log_level==debug_level
 
 static inline char *timenow() {

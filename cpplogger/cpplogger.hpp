@@ -95,8 +95,11 @@ static inline char *timenow();
 #if LOG_LEVEL == DEBUG_LEVEL
 //catch error using try block
 #ifdef CATCH_ERROR 
-#define CATCH(CODE) try{CODE} catch(...)\
-                    {LOG_DEBUG("exception");}
+#define CATCH(CODE) try{CODE} \
+                    catch (const std::exception& e)\
+                    {LOG_DEBUG(e.what());}\
+                    catch(...)\
+                    {LOG_DEBUG("unknown exception");}
 #endif // CATCH_ERROR
 
 //function to print expression and identifier

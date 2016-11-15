@@ -3,6 +3,11 @@
 #ifndef HLOGGER_H
 #define HLOGGER_H
 
+/**
+
+cpplogger.h
+Purpose : Provided logging function
+How to use : cpplogger.h must be included in cpp
 
 
 

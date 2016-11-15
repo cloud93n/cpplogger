@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include <stdio.h>
-#define LOG_LEVEL 1
+#define LOG_LEVEL 3
 #define PRINT_VAR
 #define CATCH_ERROR
 #include "cpplogger.h"
@@ -23,7 +23,7 @@ int main(int argc, const char * argv[]) {
 
     int i = 0;
     _(++i);
-    std::cout << i;
+  
     CATCH(
         int i;
 

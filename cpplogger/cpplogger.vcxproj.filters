@@ -24,7 +24,7 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cpplogger.h">
+    <ClInclude Include="cpplogger.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

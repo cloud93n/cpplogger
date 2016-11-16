@@ -113,15 +113,16 @@ static inline char *timenow();
 #define _(X) X
 #endif //log_level==debug_level
 
-static inline char *timenow() {
-    static char buffer[64];
+static inline char *timenow() 
+{
+    static char buffer[80];
     time_t rawtime;
     struct tm *timeinfo;
 
     time(&rawtime);
     timeinfo = localtime(&rawtime);
 
-    strftime(buffer, 64, "%Y-%m-%d %H:%M:%S", timeinfo);
+    strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", timeinfo);
 
     return buffer;
 }

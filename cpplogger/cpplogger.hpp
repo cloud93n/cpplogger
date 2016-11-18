@@ -43,7 +43,7 @@ static inline char *timenow();
 
 //logging file
 #define LOGFILE std::ofstream outfile;\
-               outfile.open("LOGNAME.LOG", std::ios::out | std::ios::trunc);
+               outfile.open("LOGNAME.LOG", std::ios::out | std::ios::app);
 
 
 //shorten file path
